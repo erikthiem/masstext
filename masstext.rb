@@ -1,11 +1,14 @@
 # MassText v2.0 - A rewrite of MassText but this time using Ruby!
 # by Erik Thiem
 
+# These are here for downloading and parsing the html
 require 'nokogiri'
 require 'open-uri'
 
+
+# Given a number, this function returns a string containing the carrier name 
+# if the number is a valid, US cell phone number. Otherwise it returns nothing.
 def carrierName(number)
-# Given a number, this function returns a string containing the carrier name if the number is a valid, US cell phone number. Otherwise it returns nothing.
 	webpage = "http://www.whitepages.com/phone/#{number}"
 
 	# Get a Nokogiri::HTML::Document for the page we're interested in...
@@ -27,23 +30,30 @@ def carrierName(number)
 	return carrier_name_word_array[0]
 end
 
-def randoNum(number_of_nums)
-	numbers = Array.new
 
-	i = 0 # counter variable
-	
-	while (i < number_of_nums)
-		# Generate a random 10-digit number
-		randnum = rand(10 ** 10)
-
-		# Check to make sure that the number is actually 10 digits
-		if randnum.to_s.length == 10
-			numbers[i] = randnum
-			i++
-		end
+# Given a carrier name, this function returns a string containing the carrier
+# name with the @company.com attached to the end. For example, verizon has
+# 8888888888@vext.com for the number 888-888-8888
+def carrierEmail(carrier)
+	if carrier == 'verizon'
+		ending = '@vtext.com'
+	elsif carrier == 'at&t'
+		ending = '@txt.att.net'
+	elsif carrier == 't-mobile'
+		ending = '@tmomail.net'
+	elsif carrier == 'sprint'
+		ending = '@messaging.sprintpcs.com'
+	elsif carrier == 'alltel'
+		ending = '@message.alltel.com'
+	elsif carrier == 'virgin'
+		ending = '@vmobl.com'
+	elsif carrier == 'cellular'
+		ending = '@mobile.celloneusa.com'
+	elsif carrier == 'nextel'
+		ending = '@messaging.sprintpcs.com' #nextel was acquired by spring
+	else
+		return false
 	end
 
-	return numbers
+	return ending
 end
-
-puts randoNum(5)
