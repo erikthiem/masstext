@@ -3,3 +3,6 @@ TODO: Stuff that should be worked into MassText whenever possible
 
 1. Make it actually work!
 2. Add a nice GUI, I was thinking using the Shoes framework (at least at first)
+3. Store previously used numbers/carriers in a file for quicker retrieval
+	- Add a button on the GUI to clear the list in order to update the numbers
+		in case the carrier has changed
