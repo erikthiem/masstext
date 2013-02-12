@@ -70,7 +70,7 @@ def sendMessage(subject, message, googleAccountName, googlePassword, toAddress)
 	smtp = Net::SMTP.new 'smtp.gmail.com', 587
 	smtp.enable_starttls
 	smtp.start('gmail.com', googleAccountName, googlePassword, :login) do
-		smtp.send_message(msg, 'MassText', toAddress)
+		smtp.send_message(complete_message, 'MassText', toAddress)
 	end
 end
 
@@ -90,6 +90,19 @@ print "Please enter a gmail account in the format name@gmail.com: "
 email = gets.chomp
 
 print "Please enter the password associated with this account: "
+# This uses the highline library to obfuscate the password
 password = ask("") { |q| q.echo = "*" }
 
 
+# Determine the carrier
+carrier = carrierName(number)
+
+# Determine the ending
+ending = carrierEmail(carrier)
+
+# Set the complete addresses
+complete_address = number + ending
+
+
+# Send the message
+sendMessage(subject, message, email, password, complete_address)
