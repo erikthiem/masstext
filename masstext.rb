@@ -5,6 +5,9 @@
 require 'nokogiri'
 require 'open-uri'
 
+# This is required for sending the message
+require 'net/smtp'
+
 
 # Given a number, this function returns a string containing the carrier name 
 # if the number is a valid, US cell phone number. Otherwise it returns nothing.
@@ -56,4 +59,15 @@ def carrierEmail(carrier)
 	end
 
 	return ending
+end
+
+# Given a gmail account, this function sends a message to an address
+# using the gmail account
+def sendMessage(subject, message, yourAccountName, yourPassword, toAddress)
+	complete_message = "Subject: #{subject}\n\n#{message}."
+	smtp = Net::SMTP.new 'smtp.gmail.com', 587
+	smtp.enable_starttls
+	smtp.start('gmail.com', yourAccountName, yourPassword, :login) do
+		smtp.send_message(msg, 'MassText', toAddress)
+	end
 end
