@@ -8,6 +8,8 @@ require 'open-uri'
 # This is required for sending the message
 require 'net/smtp'
 
+# This is required for making the password appear as asterisks
+require 'highline/import'
 
 # Given a number, this function returns a string containing the carrier name 
 # if the number is a valid, US cell phone number. Otherwise it returns nothing.
@@ -63,11 +65,31 @@ end
 
 # Given a gmail account, this function sends a message to an address
 # using the gmail account
-def sendMessage(subject, message, yourAccountName, yourPassword, toAddress)
+def sendMessage(subject, message, googleAccountName, googlePassword, toAddress)
 	complete_message = "Subject: #{subject}\n\n#{message}."
 	smtp = Net::SMTP.new 'smtp.gmail.com', 587
 	smtp.enable_starttls
-	smtp.start('gmail.com', yourAccountName, yourPassword, :login) do
+	smtp.start('gmail.com', googleAccountName, googlePassword, :login) do
 		smtp.send_message(msg, 'MassText', toAddress)
 	end
 end
+
+
+# Request information from user
+
+print "Please enter the cell phone number in the format 1234567890: "
+number = gets.chomp
+
+print "Please enter the subject: "
+subject = gets.chomp
+
+print "Please enter the message: "
+message = gets.chomp
+
+print "Please enter a gmail account in the format name@gmail.com: "
+email = gets.chomp
+
+print "Please enter the password associated with this account: "
+password = ask("") { |q| q.echo = "*" }
+
+
