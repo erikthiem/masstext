@@ -85,8 +85,14 @@ complete_addresses = Array.new # for ex, "4445556666@vtext.com"
 
 i = 0; # Counter variable for the following while loop
 number = 1
+
+# Instruction message
+puts "\n\nPlease enter each cell phone number in the format 1234567890"
+puts "After each phone number, hit enter. After you have entered the"
+puts "final number, enter 0 and press enter."
+puts
 while number != "0"
-	print "Please enter the cell phone number in the format 1234567890: "
+	print "> "
 	number = gets.chomp
 	if number != "0"
 		numbers[i] = number
@@ -105,7 +111,6 @@ email = gets.chomp
 print "Please enter the password associated with this account: "
 # This uses the highline library to obfuscate the password
 password = ask("") { |q| q.echo = "*" }
-
 
 # Determine the carrier
 for i in 0..numbers.length-1
