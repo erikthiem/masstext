@@ -7,3 +7,4 @@ TODO: Stuff that should be worked into MassText whenever possible
 		in case the carrier has changed
 3. Ability to read numbers in a list seperated by commas
 4. Ability to read numbers from a list in a text file
+5. Add error handling so nasty messages don't appear
