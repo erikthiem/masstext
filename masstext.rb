@@ -75,10 +75,23 @@ def sendMessage(subject, message, googleAccountName, googlePassword, toAddress)
 end
 
 
-# Request information from user
+# Set arrays that will hold later information
+numbers = Array.new # Used to store the entered phone numbers
+carriers = Array.new # Used to store the determined carrier names
+endings = Array.new # Used to store the "@carrier.com" endings
+complete_addresses = Array.new # for ex, "4445556666@vtext.com"
 
-print "Please enter the cell phone number in the format 1234567890: "
-number = gets.chomp
+# Request information from user with the following "gets"
+
+i = 0; # Counter variable for the following while loop
+number = 1
+while number != "0"
+	print "Please enter the cell phone number in the format 1234567890: "
+	number = gets.chomp
+	if number != "0"
+		numbers[i] = number
+	end
+end
 
 print "Please enter the subject: "
 subject = gets.chomp
@@ -95,14 +108,21 @@ password = ask("") { |q| q.echo = "*" }
 
 
 # Determine the carrier
-carrier = carrierName(number)
+for i in 0..numbers.length-1
+	carriers[i] = carrierName(numbers[i])
+end
 
 # Determine the ending
-ending = carrierEmail(carrier)
+for i in 0..carriers.length-1
+	endings[i] = carrierEmail(carriers[i])
+end
 
 # Set the complete addresses
-complete_address = number + ending
-
+for i in 0..endings.length-1
+	complete_addresses[i] = numbers[i] + endings[i]
+end
 
 # Send the message
-sendMessage(subject, message, email, password, complete_address)
+for i in 0..complete_addresses.length-1
+	sendMessage(subject, message, email, password, complete_addresses[i])
+end
