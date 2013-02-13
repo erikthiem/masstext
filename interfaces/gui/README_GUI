@@ -1,0 +1,8 @@
+MassText should have a nice graphical interface (GUI). This is something
+that the previous MassText (using python) never really managed to have, but
+I want to do it better this time. I am going to use the Shoes framework 
+(shoesrb.com) to start out because it is very simple, and I will only move on
+to a more complicated framework if Shoes cannot handle important features
+of MassText.
+
+This folder will be used to hold anything GUI related.
