@@ -42,7 +42,7 @@ Shoes.app :width => 400, :height => 400 do
 
 	stack do
 		@submit.click do
-		# TODO: Add in code that does something when the submit button is clicked		
+		# TODO: Add in code that does something when the submit button is clicked	
 
 		end
 	end

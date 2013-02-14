@@ -3,6 +3,9 @@
 # Load functions from backend.rb file
 require_relative "../../backend/backend.rb"
 
+# The MassText class has all of the required functions
+masstext = MassText.new
+
 i = 0 # Counter variable for the following while loop
 number = 1  # Variable that the user's input is immediately stored to
 numbers = Array.new
@@ -27,7 +30,7 @@ while number != "0"
 end
 
 # This only allows 10-digit numbers to continue in the program
-numbers = validateNumbers(numbers)
+numbers = masstext.validateNumbers(numbers)
 
 # Confirm the numbers to which the message will be sent
 puts "The message will be sent to the following numbers:\n"
@@ -52,4 +55,4 @@ print "Please enter the password associated with this account: "
 password = ask("") { |q| q.echo = "*" }
 
 # Send the message
-sortAndSend(numbers, subject, message, email, password) 
+masstext.sortAndSend(numbers, subject, message, email, password) 
