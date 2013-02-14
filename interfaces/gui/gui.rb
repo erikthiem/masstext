@@ -1,8 +1,10 @@
 # NOT WORKING, USE CONSOLE INTERFACE
 
 Shoes.app do
-	title "MassText\n"
-	
+	stack do
+		title "MassText\n"
+	end
+		
 	stack do
 		flow do
 			para "Number:\t\t\t"
@@ -16,7 +18,7 @@ Shoes.app do
 
 		flow do
 			para "Gmail password:\t\t"
-			password = edit_line
+			password = edit_line :secret => true
 		end
 
 		flow do
