@@ -1,6 +1,7 @@
 # NOT WORKING, USE CONSOLE INTERFACE
 
-Shoes.app do
+Shoes.app :width => 400, :height => 400 do
+	background "#F0F0F0"
 	stack do
 		title "MassText\n"
 	end
@@ -28,11 +29,21 @@ Shoes.app do
 
 		flow do
 			para "Message:\t\t\t"
-			message = edit_line
+			message = edit_box
 		end
 
+	end
+
+	stack do
 		flow do
-			button "Send"
+			@submit = button "Send" 
+		end
+	end
+
+	stack do
+		@submit.click do
+		# TODO: Add in code that does something when the submit button is clicked		
+
 		end
 	end
 
