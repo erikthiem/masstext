@@ -1,6 +1,3 @@
-# MassText v2.0 - A rewrite of MassText but this time using Ruby!
-# by Erik Thiem
-#
 # This file contains the functions needed for both the ../interfaces/console/console.rb
 # and ../interfaces/gui/gui.rb
 
