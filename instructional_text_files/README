@@ -1,0 +1,24 @@
+MassText
+Version: 2.0
+by Erik Thiem
+
+----------------------------------------------------------------------
+
+Thank you for downloading MassText
+MassText is a program that allows easily sending the same text message
+to multiple mobile phones at the same time from a computer.
+
+This is a re-make of my previous MassText program from 
+three years ago. The previous time MassText was written in
+Python, but this time I am re-writing it using Ruby because
+Ruby seems like a nicer, simpler language.
+
+There is not much to see so far, but check back for many 
+(hopefully frequent) updates. Feel free to contribute to this project!
+To contact me, email erikthiem@gmail.com and please include MassText
+in the subject line.
+
+----------------------------------------------------------------------
+
+If you are going to contribute, make sure to follow one simple rule:
+Do NOT push commits to github if they do not function.

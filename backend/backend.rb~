@@ -79,9 +79,10 @@ end
 
 # Does everything. Gets an array of numbers, checks to make sure that they are valid, then sends.
 # Use only this function when implementing this in the console or the gui interfaces
-def sortAndSend(numbers, subject, message, googleAccountName, googlePassword)
+def sortAndSend(numbers, subject, message, googleAccountName, googlePassword, toAddress)
 
 	# Set arrays that will hold later information
+	numbers = Array.new # Used to store the entered phone numbers
 	carriers = Array.new # Used to store the determined carrier names
 	endings = Array.new # Used to store the "@carrier.com" endings
 	complete_addresses = Array.new # for ex, "4445556666@vtext.com"
@@ -103,9 +104,8 @@ def sortAndSend(numbers, subject, message, googleAccountName, googlePassword)
 
 	# Send the message to the complete addresses
 	for i in 0..complete_addresses.length-1
-		sendMessage(subject, message, googleAccountName, googlePassword, complete_addresses[i])
+		sendMessage(subject, message, email, password, complete_addresses[i])
 	end
-
 end
 
 # This takes an array of numbers and returns 
