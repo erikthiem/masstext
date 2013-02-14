@@ -9,27 +9,27 @@ Shoes.app :width => 400, :height => 400 do
 	stack do
 		flow do
 			para "Number:\t\t\t"
-			number = edit_line
+			@number = edit_line
 		end
 
 		flow do
 			para "Gmail username:\t\t"
-			username = edit_line
+			@username = edit_line
 		end
 
 		flow do
 			para "Gmail password:\t\t"
-			password = edit_line :secret => true
+			@password = edit_line :secret => true
 		end
 
 		flow do
 			para "Subject:\t\t\t\t"
-			subject = edit_line
+			@subject = edit_line
 		end
 
 		flow do
 			para "Message:\t\t\t"
-			message = edit_box
+			@message = edit_box
 		end
 
 	end
@@ -42,8 +42,7 @@ Shoes.app :width => 400, :height => 400 do
 
 	stack do
 		@submit.click do
-		# TODO: Add in code that does something when the submit button is clicked	
-
+			alert @message.text()
 		end
 	end
 
